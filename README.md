@@ -1,4 +1,14 @@
 # README
+## ユーザー管理機能について
+
+|Column|Type|Options|
+|------|----|-------|
+|user_id|string|null: false, foreign_key: true|
+|name|string|null: false, foreign_key: true|
+
+### Association
+- belongs_to :name
+- belongs_to :user
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
