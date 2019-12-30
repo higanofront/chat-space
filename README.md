@@ -6,9 +6,12 @@
 |email|string|null: false|
 |password|string|null: false|
 |username|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :posts
-- has_many :comments
+- has_many :group,  
+- has_many :groups  thorough:  group_users table
+
 
 ## postsテーブル(投稿を管理するテーブル)
 |Column|Type|Options|
@@ -18,19 +21,7 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :comments
-- has_many :posts_tags
-- has_many  :tags,  through:  :posts_tags
 
-## commentsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :post
-- belongs_to :user
 
 ## groupテーブル
 |Column|Type|Options|
@@ -39,6 +30,16 @@
 |chatmember|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :post
-- belongs_to :user
+- has_many :user  
+- has_many :groups  thorough:  group_users table
 
+
+## group_users table
+|Column|Type|Options|
+|------|----|-------|
+|user_id|integer|null: false|
+|group_id|integer|null: false, foreign_key: true|
+|id|integer|null: false, foreign_key: true|
+### Association
+- has_many :user  
+- has_many :group   
