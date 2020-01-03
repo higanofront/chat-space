@@ -10,36 +10,38 @@
 ### Association
 - has_many :posts
 - has_many :group,  
-- has_many :groups  thorough:  group_users table
+- has_many :group_users table  thorough:  group_users table
 
 
 ## postsテーブル(投稿を管理するテーブル)
 |Column|Type|Options|
 |------|----|-------|
-|title|text|null: false|
+|image|null: false|
 |text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false,|
 ### Association
-- belongs_to :user
+- belongs_to :users
+- belongs_to :groups
 
 
-## groupテーブル
+## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |group-name|text|null: false|
-|chatmember|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|chatmember|integer|null: false, |
+|group_id|integer|null: false, |
 ### Association
-- has_many :user  
-- has_many :groups  thorough:  group_users table
+- has_many :users  
+- has_many :group_users table  thorough:  group_users table
+- has_many :posts
+
 
 
 ## group_users table
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false|
-|group_id|integer|null: false, foreign_key: true|
-|id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, |
 ### Association
-- has_many :user  
-- has_many :group   
+- has_many :users  
+- has_many :groups  
