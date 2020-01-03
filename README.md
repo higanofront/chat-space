@@ -5,11 +5,11 @@
 |------|----|-------|
 |email|string|null: false|｜add_index :users, :email, unique: true｜
 |password|string|null: false|
-|name|string|null: false||foreign_key: true|
+|name|string|null: false||index: true|
 
 ### Association
 - has_many :posts
-- has_many :groups thorough:  group_users 
+- has_many :groups, through: :group_users 
 - has_many :group_users  
 
 
@@ -18,10 +18,10 @@
 |------|----|-------|
 |image||string|
 |body|text||
-|user_id|integer|null: false,|
+|user|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- has_many :groups
+- belongs_to :group
 
 ## groupsテーブル
 |Column|Type|Options|
@@ -29,7 +29,7 @@
 |name|string|null: false|
 
 ### Association
-- has_many :users  thorough:  group_users 
+- has_many :users, through: :group_users
 - has_many :group_users  
 - has_many :posts
 
@@ -38,8 +38,8 @@
 ## groups_users テーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false||foreign_key: true|
-|group_id|integer|null: false,||foreign_key: true|
+|user_id|references|null: false||foreign_key: true|
+|group_id|references|null: false,||foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :group
