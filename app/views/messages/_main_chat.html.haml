@@ -2,9 +2,11 @@
   .main__header
     .main__header__post-name
       .main__header__post-member
-        ひがのです
+        = @group.name
       .main__header__post-member-name
-        Member : ひがの
+        Member : 
+        - @group.users.each do |user|
+          = user.name
     = link_to edit_group_path(@group), class: "edit" do
       .main__header__Edit
         Edit
