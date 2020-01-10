@@ -5,10 +5,11 @@
         ひがのです
       .main__header__post-member-name
         Member : ひがの
-    = link_to "#", class: "edit" do
+    = link_to edit_group_path(@group), class: "edit" do
       .main__header__Edit
         Edit
   .main__contents
+    = render @messages
     .main__contents__message-date
       .main__contents__message-date__message-tolker
         higano
@@ -17,12 +18,11 @@
         .main__contents__message-date__message-date
           自社開発に就職させてくださいお願いします。
   .main__footer
-    .main__footer__post-form
-      .main__footer__post-text
-      .main__footer__post-image
-        %label{class: "input-box__image"}
-          %i.fa.fa-image
-          %input{class:"selectmark",type: "file"}
-      .main__footer__send
-        send
-            
+    = form_for [@group, @message] do |f|
+      .main__footer__post-form
+        = f.text_field :content, class: 'main__footer__post-text', placeholder: 'type a message'
+        .main__footer__post-image
+          = f.label :image, class: 'input-box__image' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'selectmark'
+        = f.submit 'Send', class: 'main__footer__send'
