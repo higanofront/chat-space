@@ -2,27 +2,22 @@
   .main__header
     .main__header__post-name
       .main__header__post-member
-        ひがのです
+        = @group.name
       .main__header__post-member-name
-        Member : ひがの
-    = link_to "#", class: "edit" do
+        Member : 
+        - @group.users.each do |user|
+          = user.name
+    = link_to edit_group_path(@group), class: "edit" do
       .main__header__Edit
         Edit
   .main__contents
-    .main__contents__message-date
-      .main__contents__message-date__message-tolker
-        higano
-        .main__contents__message-date__message-info
-          2020/01/06(Mon) 20:04:38
-        .main__contents__message-date__message-date
-          自社開発に就職させてくださいお願いします。
+    = render @messages
   .main__footer
-    .main__footer__post-form
-      .main__footer__post-text
-      .main__footer__post-image
-        %label{class: "input-box__image"}
-          %i.fa.fa-image
-          %input{class:"selectmark",type: "file"}
-      .main__footer__send
-        send
-            
+    = form_for [@group, @message] do |f|
+      .main__footer__post-form
+        = f.text_field :content, class: 'main__footer__post-text', placeholder: 'type a message'
+        .main__footer__post-image
+          = f.label :image, class: 'input-box__image' do
+            = icon('fas', 'image', class: 'icon')
+            = f.file_field :image, class: 'selectmark'
+        = f.submit 'Send', class: 'main__footer__send'
