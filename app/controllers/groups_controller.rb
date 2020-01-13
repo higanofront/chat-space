@@ -19,7 +19,6 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
-    # groupはテーブル名 findメソッド 
   end
 
   def update
