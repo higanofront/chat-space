@@ -33,7 +33,6 @@ $(function() {
   $("#user-search-field").on("keyup", function() {
     
     let input = $("#user-search-field").val();
-    // console.log(input);
     $.ajax({
       type: "GET",
       url: "/users",
@@ -58,13 +57,10 @@ $(function() {
     });
   });
   $("#user-search-result").on("click", ".chat-group-user__btn--add" ,function() {
-    // ①追加ボタンが押されたら
     const userName = $(this).attr("data-user-name");
     const userId = $(this).attr("data-user-id");
 
     $(this).parent().remove();
-
-    // ②HTMLを作成する関数を呼び出す
     addDeleteUser(userName, userId);
   });
   
@@ -105,33 +101,3 @@ $(function() {
 
 
 
-
-
-
-
-
-
-
-// $(function() {
-//   $("#group-search-field").on("keyup", function() {
-//     let input = $("#group-search-field").val();
-//     console.log(input);
-//   });
-//   $("#user-search-field").on("keyup", function() {
-//     let input = $("#user-search-field").val();
-//     console.log(input);
-//   });
-// });
-
-// $.ajax({
-//   type: "GET",  //HTTPメソッド
-//   url: "/users",      //users_controllerの、indexアクションにリクエストの送信先を設定する
-//   data: { keyword: input },
-//   dataType: "json"  //テキストフィールドに入力された文字を設定する
-// })  
-//   .done(function(users) {
-//     console.log("成功です");  
-//   })
-//   .fail(function() {
-//     console.log("失敗です");
-//   })
