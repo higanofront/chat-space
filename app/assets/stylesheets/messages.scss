@@ -176,17 +176,6 @@
             display: inline;
             padding-left: 20px;
           }
-          &__post-image{
-            font-size: 1.5rem;
-            position: absolute;
-            right: 70px;
-            top: 30px;
-            display: inline;
-            padding-right: 0px;
-            .selectmark{
-              display: none;
-            }
-          }
             &__send{
               height: 50px;
               width: 80px;
@@ -201,6 +190,18 @@
               line-height: 50px;
               
             }
+          &__post-image{
+            font-size: 1.5rem;
+            position: absolute;
+            right: 70px;
+            top: 30px;
+            display: inline;
+            padding-right: 0px;
+            .selectmark{
+              display: none;
+            }
+          }
+          
         
     }
   }
